@@ -33,10 +33,12 @@ public class CashAccountImp implements AccountI {
 	}
 
 	private void validateCashTransaction(Transaction transaction) {
-		if (transaction.getValidationrResult().isValid()
-				&& (transaction.getStatus().equals(TransactionStatusEum.MODIFICATION))) {
-
-			transaction.setStatus(TransactionStatusEum.VALID);
+		if ((transaction.getStatus().equals(TransactionStatusEum.MODIFICATION))) {
+			if(transaction.getValidationrResult().isValid()) {
+				transaction.setStatus(TransactionStatusEum.VALID);				
+			}else {
+				transaction.setStatus(TransactionStatusEum.ERROR);				
+			}
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.bank.technical;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
@@ -8,6 +9,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Amount {
 	@NonNull
 	AmountValue value;
@@ -31,6 +33,11 @@ public class Amount {
 	public static Amount add(Amount val,Amount val2) {
 		return Amount.Of(val.getValue().add(val2.getValue()).doubleValue());
 	}
+	
+	public static Amount subtract(Amount val,Amount val2) {
+		return Amount.Of(val.getValue().subtract(val2.getValue()).doubleValue());
+	}
+	
 	public static int compareTo(Amount val,Amount val2) {
 		return val.getValue().compareTo(val2.getValue());
 	}
